@@ -42,7 +42,11 @@ public class FileTry {
                removeSmallWords(line, lineList);
 
                for(int i = 0; i < lineList.size(); i++) {
-                bst.insert(lineList.get(i));
+                    bst.insert(lineList.get(i));
+
+                if(!uniqueWords.search(lineList.get(i))) {
+                    uniqueWords.insert(lineList.get(i));
+                }
 
                }
                     
@@ -55,11 +59,11 @@ public class FileTry {
 
             }
            
-            bst.printWordsToFile(out);
+            uniqueWords.printWordsToFile(out);
             System.out.println(bst.getCount("how"));
-            bst.inOrderWalkStart();
+            uniqueWords.inOrderWalkStart();
             //bst.inOrderWalkStart();
-            bst.destroy();
+            
                
 
             br.close();
@@ -68,6 +72,7 @@ public class FileTry {
             System.out.println("ERROR: File not found. Please enter a valid file name.");
 
         } finally {
+           bst.destroy();
            input.close();
            
         }
