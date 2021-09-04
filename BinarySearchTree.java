@@ -98,21 +98,24 @@ public class BinarySearchTree {
         
 
         
-    public void printWordsToFile(BufferedWriter bf) {
+    public void printWordsToFile(BufferedWriter bf, BinarySearchTree allWords) {
         if(root != null)
-            printWordsToFile(this.root, bf);
+            printWordsToFile(this.root, bf, allWords);
     }
 
-    public void printWordsToFile(Node root, BufferedWriter bf) {
+    public void printWordsToFile(Node root, BufferedWriter bf, BinarySearchTree allWords) {
         if(root != null) {
             
-            printWordsToFile(root.left, bf);
+            printWordsToFile(root.left, bf, allWords);
             try {
-                bf.write(root.content + "\n");
+                //write word and spaces
+                bf.write(root.content + "   ");
+                //write count of that particular word
+                bf.write(allWords.getCount(root.content) + "\n");
             } catch (IOException e) {
                 System.out.println("ERROR IN WRITING TO FILE");
             }
-            printWordsToFile(root.right, bf);
+            printWordsToFile(root.right, bf, allWords);
         }
     }
     
@@ -137,15 +140,5 @@ public class BinarySearchTree {
         root = null;
     }
 
-    public static void main(String[] args) {
-        BinarySearchTree bst = new BinarySearchTree();
-
-        bst.insert("cat");
-        bst.insert("dog");
-        bst.insert("apple");
-        bst.insert("hi");
-       
-        bst.inOrderWalkStart();
-    }
 
 }

@@ -1,10 +1,10 @@
 import java.io.*;
 import java.util.*;
-public class FileTry {
+public class WordList {
     public static void main(String[] args) {
         
         Scanner input = new Scanner(System.in);
-        BinarySearchTree bst = new BinarySearchTree();
+        BinarySearchTree allWords = new BinarySearchTree();
         BinarySearchTree uniqueWords = new BinarySearchTree();
         String str;
         String[] line;
@@ -42,11 +42,11 @@ public class FileTry {
                removeSmallWords(line, lineList);
 
                for(int i = 0; i < lineList.size(); i++) {
-                    bst.insert(lineList.get(i));
+                    allWords.insert(lineList.get(i));
 
-                if(!uniqueWords.search(lineList.get(i))) {
-                    uniqueWords.insert(lineList.get(i));
-                }
+                    if(!uniqueWords.search(lineList.get(i))) {
+                        uniqueWords.insert(lineList.get(i));
+                    }
 
                }
                     
@@ -59,8 +59,8 @@ public class FileTry {
 
             }
            
-            uniqueWords.printWordsToFile(out);
-            System.out.println(bst.getCount("how"));
+            uniqueWords.printWordsToFile(out, allWords);
+            System.out.println(allWords.getCount("how"));
             uniqueWords.inOrderWalkStart();
             //bst.inOrderWalkStart();
             
@@ -72,7 +72,8 @@ public class FileTry {
             System.out.println("ERROR: File not found. Please enter a valid file name.");
 
         } finally {
-           bst.destroy();
+           allWords.destroy();
+           uniqueWords.destroy();
            input.close();
            
         }
