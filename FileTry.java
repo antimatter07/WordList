@@ -6,6 +6,9 @@ public class FileTry {
         Scanner input = new Scanner(System.in);
         BinarySearchTree bst = new BinarySearchTree();
         BinarySearchTree uniqueWords = new BinarySearchTree();
+        String str;
+        String[] line;
+        ArrayList<String> lineList = new ArrayList<String>();
         /* TODO:
            > 1 BST will contain copies of the words in the .txt file
            (without all the unnecassary spaces)
@@ -24,9 +27,7 @@ public class FileTry {
         try { 
             BufferedReader br = new BufferedReader(new FileReader("INPUT.txt"));
             BufferedWriter out = new BufferedWriter(new FileWriter("WORDS.txt"));
-            String str;
-            String[] line;
-            ArrayList<String> lineList = new ArrayList<String>();
+           
             
 
             while((str = br.readLine()) != null) {
