@@ -81,7 +81,7 @@ public class WordList {
             out.close();
 
         } catch (IOException e) {
-            System.out.println("ERROR: File not found. Please enter a valid file name.");
+            System.out.println("ERROR: File not found.");
 
         } finally {
             //before terminating program, destroy trees
