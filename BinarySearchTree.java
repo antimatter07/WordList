@@ -27,6 +27,7 @@ public class BinarySearchTree {
         
         root = insert(newNodeContent, root);
     }
+    //get count of a word in the BST
     public int getCount(String key) {
         int count = 0;
         //Node temp;
@@ -36,7 +37,7 @@ public class BinarySearchTree {
 
     }
 
-    
+    //recursively get the count (number of isntances) of a word in the BST
     public int getCount(String key, Node root, int count) {
         
         if(root != null && key.equalsIgnoreCase(root.content))
@@ -52,6 +53,8 @@ public class BinarySearchTree {
         
         
     }
+
+    //return true if word is in the BST, false otherwise
     public boolean search(String key) {
         Node temp = null;
 
@@ -75,6 +78,7 @@ public class BinarySearchTree {
         }
         
     }
+    //insert String in the proper position in the BST
     public Node insert(String newNodeContent, Node root) {
         if(root == null) {
             
@@ -98,21 +102,27 @@ public class BinarySearchTree {
         
 
         
-    public void printWordsToFile(BufferedWriter bf) {
+    public void printWordsToFile(BufferedWriter bf, BinarySearchTree allWords) {
         if(root != null)
-            printWordsToFile(this.root, bf);
+            printWordsToFile(this.root, bf, allWords);
     }
 
-    public void printWordsToFile(Node root, BufferedWriter bf) {
+    //traverse the tree via in order walk, write each word into file, and get count each
+    // in the binary search allWords that contains the same words including the duplicates.
+    public void printWordsToFile(Node root, BufferedWriter bf, BinarySearchTree allWords) {
         if(root != null) {
             
-            printWordsToFile(root.left, bf);
+            printWordsToFile(root.left, bf, allWords);
             try {
-                bf.write(root.content + "\n");
+                //write word and spaces
+                bf.write(root.content + "   ");
+                //write count of that particular word
+                bf.write(allWords.getCount(root.content) + "\n");
+
             } catch (IOException e) {
                 System.out.println("ERROR IN WRITING TO FILE");
             }
-            printWordsToFile(root.right, bf);
+            printWordsToFile(root.right, bf, allWords);
         }
     }
     
@@ -123,6 +133,7 @@ public class BinarySearchTree {
             inOrderWalk(this.root);
         
     }
+    //traverse the tree with in order walk
     public void inOrderWalk(Node root) {
         
         if(root != null) {
@@ -132,20 +143,10 @@ public class BinarySearchTree {
             inOrderWalk(root.right);
         }
     }
-
+    //destroy tree and its contents
     public void destroy() {
         root = null;
     }
 
-    public static void main(String[] args) {
-        BinarySearchTree bst = new BinarySearchTree();
-
-        bst.insert("cat");
-        bst.insert("dog");
-        bst.insert("apple");
-        bst.insert("hi");
-       
-        bst.inOrderWalkStart();
-    }
 
 }
