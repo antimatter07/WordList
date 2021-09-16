@@ -15,20 +15,6 @@ public class WordList {
         //will contain the line of text after reading from textfile
         String[] line;
         ArrayList<String> lineList = new ArrayList<String>();
-        /* TODO:
-           > 1 BST will contain copies of the words in the .txt file
-           (without all the unnecassary spaces)
-           > Make a String array that has one copy of all words, without any of the unnecassary chars
-           > Make an int array of the same size, the index of each array space corresponds
-           to the index of the word present in the String array
-           >Make a BST method that traverses the tree, increments the count everytime the same
-           word is encountered (maybe in order)
-           >Do this for all Strings in the array
-           >use buffered writer to output  a file
-
-            
-            TODO: 
-        */
 
         try { 
             //instantiate reader and writer

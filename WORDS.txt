@@ -6,6 +6,7 @@ ancient   1
 and   6
 anger   1
 archive   2
+are   1
 armies   1
 aside   1
 awakens   1
@@ -42,13 +43,14 @@ grayness   1
 great   1
 grips   1
 happen   1
+hello   1
 high   1
 himself   1
 his   3
 holy   1
 homeland   1
 horror   1
-how   1
+how   2
 humanity   1
 humans   1
 installment   1
@@ -111,6 +113,7 @@ third   1
 thirst   1
 threat   2
 times   1
+today   1
 together   1
 too   1
 tower   1
@@ -135,3 +138,4 @@ won   1
 wonders   1
 world   1
 york   1
+you   1
